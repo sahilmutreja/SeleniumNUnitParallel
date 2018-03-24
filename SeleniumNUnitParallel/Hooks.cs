@@ -9,17 +9,18 @@ namespace SeleniumNUnitParallel
     [TestFixture]
     public class Hooks : Base
     {
+        BrowserType _browser;
 
         public Hooks(BrowserType browser)
         {
-            SelectBrowser(browser);
+            _browser = browser;
         }
 
 
         [SetUp]
         public void SetUpEnvironment()
         {
-
+            SelectBrowser(_browser);
         }
 
         [TearDown]
