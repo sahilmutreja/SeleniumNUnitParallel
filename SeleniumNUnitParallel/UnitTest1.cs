@@ -22,7 +22,6 @@ namespace SeleniumNUnitParallel
         {
             try
             {
-                Driver.Manage().Window.Maximize();
                 Driver.Navigate().GoToUrl("https://www.google.co.in");
                 Driver.FindElement(By.Name("q")).SendKeys("Selenium");
                 Driver.FindElement(By.Name("btnK")).Click();
@@ -33,8 +32,7 @@ namespace SeleniumNUnitParallel
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-            }
-            Driver.Close();
+            } 
         } 
     }
 
@@ -51,7 +49,6 @@ namespace SeleniumNUnitParallel
         {
             try
             {
-                Driver.Manage().Window.Maximize();
                 Driver.Navigate().GoToUrl("https://www.google.co.in");
                 Driver.FindElement(By.Name("q")).SendKeys("Selenium");
                 Driver.FindElement(By.Name("btnK")).Click();
@@ -62,8 +59,7 @@ namespace SeleniumNUnitParallel
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-            }
-            Driver.Close();
+            } 
         }
     }
 }

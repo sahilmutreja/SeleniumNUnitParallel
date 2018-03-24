@@ -1,17 +1,31 @@
-﻿using OpenQA.Selenium.Chrome;
+﻿using NUnit.Framework;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using System;
 using System.Reflection;
 
 namespace SeleniumNUnitParallel
 {
-
+    [TestFixture]
     public class Hooks : Base
     {
 
         public Hooks(BrowserType browser)
         {
             SelectBrowser(browser);
+        }
+
+
+        [SetUp]
+        public void SetUpEnvironment()
+        {
+
+        }
+
+        [TearDown]
+        public void TearDownEnvironment()
+        {
+            Driver.Close();
         }
 
         private void SelectBrowser(BrowserType browser)
