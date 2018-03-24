@@ -1,14 +1,69 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using System;
 
+/// <summary>
+/// Author: Sahil Mutreja
+/// Date: March 24, 2018
+/// Desc: Parallel test execution using NUnit framework and Parallelizable attribute
+/// </summary>
 namespace SeleniumNUnitParallel
 {
-    [TestClass]
-    public class UnitTest1
+    [TestFixture]
+    [Parallelizable]
+    public class FirefoxTest: Hooks
     {
-        [TestMethod]
-        public void TestMethod1()
+        public FirefoxTest() : base(BrowserType.firefox)
         {
+        }
+
+        [Test]
+        public void FirefoxGoogleTest()
+        {
+            try
+            {
+                Driver.Manage().Window.Maximize();
+                Driver.Navigate().GoToUrl("https://www.google.co.in");
+                Driver.FindElement(By.Name("q")).SendKeys("Selenium");
+                Driver.FindElement(By.Name("btnK")).Click();
+                Assert.That(Driver.PageSource.Contains("Selenium"), Is.EqualTo(true),
+                                "Text Selenium was not found");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            Driver.Close();
+        } 
+    }
+
+    [TestFixture]
+    [Parallelizable]
+    public class ChromeTest : Hooks
+    {
+        public ChromeTest() : base(BrowserType.chrome)
+        {
+        }
+
+        [Test]
+        public void ChromeGoogleTest()
+        {
+            try
+            {
+                Driver.Manage().Window.Maximize();
+                Driver.Navigate().GoToUrl("https://www.google.co.in");
+                Driver.FindElement(By.Name("q")).SendKeys("Selenium");
+                Driver.FindElement(By.Name("btnK")).Click();
+                Assert.That(Driver.PageSource.Contains("Selenium"), Is.EqualTo(true),
+                                "Text Selenium was not found");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            Driver.Close();
         }
     }
 }
