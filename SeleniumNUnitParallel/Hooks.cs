@@ -26,7 +26,7 @@ namespace SeleniumNUnitParallel
         [TearDown]
         public void TearDownEnvironment()
         {
-            Driver.Close();
+            Driver.Quit();
         }
 
         private void SelectBrowser(BrowserType browser)
